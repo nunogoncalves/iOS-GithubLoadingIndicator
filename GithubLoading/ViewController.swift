@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     var isAnimating = false
     var timer: NSTimer?
-    var loadingDuration: NSTimeInterval = 2.0
+    var loadingDuration: NSTimeInterval = 4.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
