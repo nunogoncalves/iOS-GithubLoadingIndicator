@@ -8,16 +8,72 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
-    let cells = ["Cell 1", "Cell 2", "Cell 3", "Cell 4", "Cell 5", "Cell 6"]
-    
+    var loadingView: GithubLoadingView!
     var refreshControl: UIRefreshControl!
     
+    let cells = ["Cell 1", "Cell 2", "Cell 3", "Cell 4", "Cell 5", "Cell 6"]
+    
+    
+    var isAnimating = false
+    var timer: NSTimer?
+    var loadingDuration: NSTimeInterval = 2.0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpRefreshControl()
+        addRefreshControl()
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clearColor()
+        refreshControl.tintColor = UIColor.clearColor()
+        
+        refreshControl.addTarget(self, action: "refresh", forControlEvents:.ValueChanged)
+        
+        addLoadingView()
+    }
+    
+    private func addLoadingView() {
+        loadingView = GithubLoadingView(frame: refreshControl.bounds)
+        refreshControl.addSubview(loadingView.view)
+    }
+    
+    private func addRefreshControl() {
+        table.addSubview(refreshControl)
+        table.layoutIfNeeded()
+    }
+    
+    func refresh() {
+        loadingView.setLoading()
+    }
+    
+    func setUpTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(
+            loadingDuration,
+            target: self,
+            selector: "endOfWork",
+            userInfo: nil,
+            repeats: true)
+    }
+    
+    
+    func endOfWork() {
+        refreshControl.endRefreshing()
+        
+        timer?.invalidate()
+        timer = nil
+    }
+}
+
+extension ViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("idCell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("idCell", forIndexPath: indexPath)
         
         cell.textLabel!.text = cells[indexPath.row]
         
@@ -27,27 +83,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
     }
-    
-    var loadingView: GithubLoadingView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.backgroundColor = UIColor.clearColor()
-        refreshControl.tintColor = UIColor.clearColor()
-        
-        table.addSubview(refreshControl)
-        table.layoutIfNeeded()
-        
-        loadingView = GithubLoadingView(frame: refreshControl.bounds)
-        refreshControl.addSubview(loadingView)
-    }
+}
 
-    var customView: UIView!
-    
-    var isAnimating = false
-    
+extension ViewController : UITableViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if refreshControl.refreshing {
             loadingView.setLoading()
@@ -61,24 +99,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if refreshControl.refreshing {
             if !isAnimating {
-                doSomething()
+                setUpTimer()
             }
         }
     }
-    
-    var timer: NSTimer!
-    
-    func doSomething() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "endOfWork", userInfo: nil, repeats: true)
-    }
-    
-    
-    func endOfWork() {
-        refreshControl.endRefreshing()
-        
-        timer.invalidate()
-        timer = nil
-    }
-    
 }
 

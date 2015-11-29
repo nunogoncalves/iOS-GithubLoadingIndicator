@@ -39,7 +39,8 @@ class GithubLoadingView: UIView {
         loadingIndicatorImageView.animationImages = images
         loadingIndicatorImageView.animationDuration = 0.75
         loadingIndicatorImageView.startAnimating()
-        
+
+        staticImage.hidden = true
         addSubview(view)
     }
 
@@ -58,7 +59,6 @@ class GithubLoadingView: UIView {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "GithubLoadingView", bundle: bundle)
         
-        // Assumes UIView is top level and only object in CustomView.xib file
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         return view
     }
