@@ -44,8 +44,13 @@ class GithubLoadingView: UIView {
         addSubview(view)
     }
 
-    func setStaticWith(percentage: Int) {
+    func setStaticWith(percentage: Int, offset: CGFloat) {
+        
         staticImage.hidden = false
+        
+        staticImage.hidden = abs(offset) < 30
+        loadingIndicatorImageView.hidden = abs(offset) < 30
+        
         var x = (100 / images.count) * percentage / 100
         if x > 7 { x = 7 }
         staticImage.image = images[x]

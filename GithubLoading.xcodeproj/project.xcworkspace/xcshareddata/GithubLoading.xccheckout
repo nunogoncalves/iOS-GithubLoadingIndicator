@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D6452695-2826-4203-BEF7-1E4B426E9CF3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GithubLoading</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A491FEC3504CACA8A367681F1E66F589840DE7DF</key>
+		<string>https://github.com/nunogoncalves/iOS-GitHubAwards.git</string>
+		<key>F08F6FF2B42A86723EC95320DD6B1D414E9AE266</key>
+		<string>https://github.com/nunogoncalves/iOS-GithubLoadingIndicator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GithubLoading.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A491FEC3504CACA8A367681F1E66F589840DE7DF</key>
+		<string>../../../..</string>
+		<key>F08F6FF2B42A86723EC95320DD6B1D414E9AE266</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nunogoncalves/iOS-GithubLoadingIndicator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F08F6FF2B42A86723EC95320DD6B1D414E9AE266</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A491FEC3504CACA8A367681F1E66F589840DE7DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F08F6FF2B42A86723EC95320DD6B1D414E9AE266</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GithubLoading</string>
+		</dict>
+	</array>
+</dict>
+</plist>

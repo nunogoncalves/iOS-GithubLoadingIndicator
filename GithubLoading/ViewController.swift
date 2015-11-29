@@ -92,7 +92,7 @@ extension ViewController : UITableViewDelegate {
         } else {
             let y = scrollView.contentOffset.y
             let perc = y * 100 / 220
-            loadingView.setStaticWith(Int(abs(perc)))
+            loadingView.setStaticWith(Int(abs(perc)), offset: y)
         }
     }
     
